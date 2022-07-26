@@ -1,3 +1,8 @@
+.items {
+  text-decoration: none;
+  color: #fff;
+}
+
 .header {
   margin: 0 2.5rem;
   padding: 0.5rem 0;
@@ -6,22 +11,28 @@
   justify-content: space-between;
 }
 
-.content {
+.headerLeft,
+.headerRight {
   display: flex;
   align-items: center;
 }
 
-.banner_icon {
-  width: 80px;
-  cursor: pointer;
-}
-.item {
-  text-decoration: none;
-  color: #fff;
+a > span {
   margin: 0 30px;
   font-size: 1.3rem;
   cursor: pointer;
+  color: white;
 }
-.item:hover {
+
+a > span:hover {
   color: red;
+}
+
+.header__icon {
+  width: 80px;
+  cursor: pointer;
+}
+
+.user__avatar {
+  font-size: 2rem;
 }

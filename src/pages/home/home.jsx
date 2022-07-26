@@ -1,22 +1,23 @@
-import { useEffect, useState, Fragment } from "react";
-import "./home-style.css";
+import { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
+import MovieList from "../../components/movieList/movieList";
+import "./home.css";
 
 const Home = () => {
-  const [popularMovies, setMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
 
   useEffect(() => {
     fetch(
       "https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US"
     )
-      .then((response) => response.json())
-      .then((data) => setMovies(data.results));
+      .then((res) => res.json())
+      .then((data) => setPopularMovies(data.results));
   }, []);
 
   return (
-    <Fragment>
+    <>
       <div className="poster">
         <Carousel
           showThumbs={false}
@@ -26,15 +27,13 @@ const Home = () => {
           showStatus={false}
         >
           {popularMovies.map((movie) => (
-            <Link to={`movie/${movie.id}`} className="items">
+            <Link to={`/movie/${movie.id}`} key={movie.id} className="item">
               <div className="posterImage">
                 <img
                   src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-                  alt={movie.original_title}
                 />
               </div>
-
-              <div className="overlay">
+              <div className="posterImage_overlay">
                 <div className="title">{movie.original_title}</div>
                 <div className="runtime">
                   {movie.release_date}
@@ -48,14 +47,10 @@ const Home = () => {
             </Link>
           ))}
         </Carousel>
+        <MovieList />
       </div>
-    </Fragment>
+    </>
   );
 };
 
 export default Home;
-
-//https://api.themoviedb.org/3/movie/550?api_key=935c845be391ee724333badcca8199ef&language=en-US
-//935c845be391ee724333badcca8199ef
-
-//https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US
