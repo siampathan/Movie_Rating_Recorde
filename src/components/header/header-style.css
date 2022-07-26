@@ -1,0 +1,27 @@
+.header {
+  margin: 0 2.5rem;
+  padding: 0.5rem 0;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.banner_icon {
+  width: 80px;
+  cursor: pointer;
+}
+.item {
+  text-decoration: none;
+  color: #fff;
+  margin: 0 30px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.item:hover {
+  color: red;
+}
